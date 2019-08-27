@@ -4,10 +4,5 @@ import time from "./lib/time.js";
 import util from "./lib/util.js";
 
 
-export default {
-    base,
-    browser,
-    time,
-    util
-}
+export default Object.assign({},base,browser,time,util);
 
