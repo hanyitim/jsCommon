@@ -21,10 +21,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hanyitim/jsCommon"
+    "url": "https://github.com/hanyitim/jsfunc"
   },
   "bugs": {
-    "url": "https://github.com/hanyitim/jsCommon/issues"
+    "url": "https://github.com/hanyitim/jsfunc/issues"
   },
   "devDependencies": {
     "babel-core": "6.26.0",

@@ -1,3 +1,3 @@
-# [jsCommon](https://github.com/hanyitim/jsCommon)
+# [jsfunc](https://github.com/hanyitim/jsfunc)
 
 

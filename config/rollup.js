@@ -1,15 +1,15 @@
 var pkg = require('../package.json');
 
-// 兼容 jsCommon 和 @hanyitim/jsCommon 
+// 兼容 jsfunc 和 @hanyitim/jsfunc 
 var name = pkg.name.split('/').pop();
 var version = pkg.version;
 
 var banner = 
 `/*!
- * jsCommon ${version} (https://github.com/hanyitim/jsCommon)
- * API https://github.com/hanyitim/jsCommon/blob/master/doc/api.md
+ * jsfunc ${version} (https://github.com/hanyitim/jsfunc)
+ * API https://github.com/hanyitim/jsfunc/blob/master/doc/api.md
  * Copyright 2017-${(new Date).getFullYear()} hanyitim. All Rights Reserved
- * Licensed under MIT (https://github.com/hanyitim/jsCommon/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/hanyitim/jsfunc/blob/master/LICENSE)
  */
 `;
 
