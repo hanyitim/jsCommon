@@ -1,5 +1,5 @@
 {
-  "name": "jsCommon",
+  "name": "jsCommonFunc",
   "version": "0.0.1",
   "description": "最好用的js第三方库脚手架",
   "main": "dist/index.js",
