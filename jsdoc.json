@@ -12,10 +12,5 @@
         "encoding": "utf8"
     },
     "templates": {
-    },
-    "plugins": ["plugins/markdown"],
-    "markdown": {
-        "tags": ["example"],
-        "idInHeadings": true
     }
 }

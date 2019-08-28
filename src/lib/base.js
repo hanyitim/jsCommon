@@ -1,47 +1,16 @@
-
-
-/**
- * [isFunction 判断是否为Function]
- * @param  {*}  arg [需要判断类型的参数]
- * @returns {Boolean}     [返回结果布尔值]
- */
-function isFunction(arg){
-    return typeof arg == "function";
-}
-
-
-/**
- * [isObject 判断是否为Object]
- * @param  {*}  arg [需要判断类型的参数]
- * @returns {Boolean}     [返回结果布尔值]
- */
-function isObject(arg){
-    return Object.prototype.toString.call(arg) == `[object Object]`;
-}
-
-
-/**
- * [isArray 判断是否为Array]
- * @param  {*}  arg [需要判断类型的参数]
- * @returns {Boolean}     [返回结果布尔值]
- */
-function isArray(arg){
-    return typeof arg == "object" && arg.constructor == Array;
-}
-
 /**
  * [isEmtryObject 判断Object是否为空对象]
  * @param  {object}  obj [obj]
  * @returns {Boolean}     [返回结果布尔值]
  */
-function isEmtryObject(obj){
-    if(!obj || !isObject(obj)){
+export function isEmtryObject(obj){
+    if(!obj || Object.prototype.toString.call(obj) !== '[object Object]'){
         obj = {};
     }
-    for (key in obj) {
+    for (let key in obj) {
         return false;
     }
-    return true
+    return true;
 }
 
 /**
@@ -50,12 +19,12 @@ function isEmtryObject(obj){
  * @param  {Object} obj2 [覆盖对象]
  * @returns {object}      [description]
  */
-function objectAssign(obj1,obj2){
+export function objectAssign(obj1,obj2){
     if(Object.assign && Object.assign.call){
         obj1=Object.assign(obj1,obj2);
     }else{
         for(var k in obj2){
-            if(isObject(obj2[k])){
+            if(Object.prototype.toString.call(obj2[k]) === '[object Object]'){
                 obj2[k] = objectAssign(obj1[k],obj2[k]);
             }
             else{
@@ -64,11 +33,4 @@ function objectAssign(obj1,obj2){
         }
     }
     return obj1;
-}
-export default {
-    isFunction,
-    isObject,
-    isArray,
-    isEmtryObject,
-    objectAssign
 }
