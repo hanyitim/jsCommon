@@ -44,41 +44,49 @@ export function formatTimeStamp(str, format) {
     return ret;
 }
 
-function compter(second,utils,noun) {
+function compter(second, utils, showDouble) {
     let arr = [],
-        numStr = parseInt(second / utils[0]) < 10 ? `0${parseInt(second / utils[0])}`:parseInt(second / utils[0]);
+        numStr = parseInt(second / utils[0]) < 10 && showDouble ? `0${parseInt(second / utils[0])}` : `${parseInt(second / utils[0])}`;
     arr.push(numStr);
     let num = second % utils[0];
-    noun = noun || ' ';
     if (num >= 0 && utils.slice(1).length > 0) {
-        arr.push(compter(num,utils.slice(1),noun));
+        arr = arr.concat(compter(num, utils.slice(1), showDouble));
     }
-    return arr.join(noun);
+    return arr;
 }
 /**
  * 倒计时
  * @param {number} endTimeStamp   倒计时结束时间戳
- * @param {array} noun  分隔符
+ * @param {Object} options  配置  showDouble,utils,info
  * @returns {string} 倒计时结果，小时：分：秒
  */
-export function countDown(endTimeStamp,noun){
-    var now = new Date();
-    var result = null;
+export function countDown(endTimeStamp, options = {}) {
+    let now = new Date(),
+        result = null,
+        defaultOptions = Object.assign({
+            showDouble: false,
+            utils: [24 * 60 * 60, 60 * 60, 60, 1],
+            info: ['天', '小时', '分', '秒']
+        },options),
+        { showDouble, utils, info } = defaultOptions;
     if (endTimeStamp && endTimeStamp > now.getTime()) {
-        var utils = [60 * 60, 60, 1];
-        var time_diff = parseInt((endTimeStamp - now.getTime()) / 1000);
-        result = compter(time_diff,utils,noun);
-    }
-    return result;
-}
-let cancheTimeStamp = Date.now();
+        let time_diff = parseInt((endTimeStamp - now.getTime()) / 1000),
+            compArr = compter(time_diff, utils, showDouble);
 
+        result = compArr.map((item, index) => {
+            return `${item}${info[index]}`;
+        });
+    }
+    return result.join('');
+}
+
+let cancheTimeStamp = Date.now();
 /**
  * 计算代码执行diff时间
  * @param {*} label  日志标识
  * @param {*} isStar 开始执行时间标记
  */
-export function diffTime(label,isStar){
+export function diffTime(label, isStar) {
     let now = Date.now(),
         diff = now - cancheTimeStamp;
     !isStar && console.info(`${label} diffTime:${diff}ms`);

@@ -18,7 +18,7 @@ export function transformImageSize(size, imgsrc) {
 
         if (info.address && info.name && info.type && size !== info.size) {
             if (size == 0) {
-                imgsrc = `${info.address}/${info.name + info.type}`;
+                imgsrc = `${info.address}/${info.name}.${info.type}`;
             }
             else {
                 imgsrc = `${info.address}/${info.name}_${size}x${size}.${info.type}`;
@@ -33,7 +33,7 @@ export function transformImageSize(size, imgsrc) {
  * @returns {string}
  */
 export function concatClass() {
-    return Array.prototype.join.call(arguments, ' ');
+    return `${Array.prototype.join.call(arguments, ' ')}`.trim();
 }
 
 /**
