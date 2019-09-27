@@ -85,3 +85,45 @@ export function adapter(data,distkv){
     }
     return result;
 }
+function _throttling(fn,wait) {
+    this.timestamp = 0;
+    this.fn = fn;
+    this.wait = wait;
+}
+_throttling.prototype.doing = function(){
+    var self = this;
+    if(self.timestamp === 0 || self.timestamp + parseInt(self.wait) < Date.now()){
+        self.timestamp = Date.now();
+        self.fn.apply(null,arguments);
+    }
+};
+/**
+ * 节流
+ * @param {function} fn 行为函数
+ * @param {number} wait 时间间隔(ms)
+ */
+export function throttling(fn=function(){},wait=200){
+    return new _throttling(fn,wait);
+}
+function _antiShake(fn,wait) {
+    this.fn = fn;
+    this.wait = wait;
+    this.timestamp = Date.now();
+}
+_antiShake.prototype.doing = function(){
+    var self = this;
+    if(self.timer){
+        clearTimeout(self.timer);
+    }
+    self.timer = setTimeout(()=>{
+        self.fn.apply(null,arguments);
+    },self.wait);
+};
+/**
+ * 防抖
+ * @param {function} fn 行为函数
+ * @param {number} wait 防抖时长(ms)
+ */
+export function antiShake(fn=function(){},wait=200){
+    return new _antiShake(fn,wait);
+}

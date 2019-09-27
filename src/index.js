@@ -1,7 +1,7 @@
 import {isEmtryObject,objectAssign}from './lib/base.js';
 import {Browser,getCookie,getQueryString,setCookie,deleteCookie} from './lib/browser.js';
 import {formatTimeStamp,countDown,diffTime} from './lib/time.js';
-import {transformImageSize,concatClass,getRelesestage,adapter} from './lib/util.js';
+import {transformImageSize,concatClass,getRelesestage,adapter,antiShake,throttling} from './lib/util.js';
 
 export {
     isEmtryObject,
@@ -17,6 +17,8 @@ export {
     transformImageSize,
     concatClass,
     getRelesestage,
-    adapter
+    adapter,
+    antiShake,
+    throttling
 };
 
