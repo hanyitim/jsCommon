@@ -77,7 +77,7 @@ export function countDown(endTimeStamp, options = {}) {
             return `${item}${info[index]}`;
         });
     }
-    return result.join('');
+    return result ? result.join('') : null;
 }
 
 let cancheTimeStamp = Date.now();
