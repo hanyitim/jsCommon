@@ -12,5 +12,6 @@
         "encoding": "utf8"
     },
     "templates": {
-    }
+    },
+    "plugins": ["plugins/markdown"]
 }
