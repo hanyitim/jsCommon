@@ -16,7 +16,7 @@
     "test": "npm run lint && npm run build && mocha",
     "release": "npm test && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags",
     "jsdoc": "jsdoc -c ./jsdoc.json",
-    "js2md":"node ./config/js2md.js"
+    "js2md": "node ./config/js2md.js"
   },
   "author": "hanyitim",
   "license": "MIT",
