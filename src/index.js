@@ -1,5 +1,5 @@
 import {isEmtryObject,objectAssign}from './lib/base.js';
-import {Browser,getCookie,getQueryString,setCookie,deleteCookie} from './lib/browser.js';
+import {Browser,getCookie,getQueryString,setCookie,deleteCookie,getQueryGroup} from './lib/browser.js';
 import {formatTimeStamp,countDown,diffTime} from './lib/time.js';
 import {transformImageSize,concatClass,getRelesestage,adapter,throttle,debounce} from './lib/util.js';
 
@@ -9,6 +9,7 @@ export {
     Browser,
     getCookie,
     getQueryString,
+    getQueryGroup,
     setCookie,
     deleteCookie,
     formatTimeStamp,

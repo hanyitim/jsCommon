@@ -81,3 +81,19 @@ export function getQueryString(name) {
     var r = window.location.search.substr(1).match(reg);
     if (r != null) return (r[2]); return null;
 }
+
+/**
+ * [getQueryGroup 获取url请求参数]
+ * @returns {object}
+ */
+export function getQueryGroup() {
+    var paramArray = window.location.search.match(/[a-zA-Z0-9]+=[^&]{0,}/gi),
+        result = {};
+    paramArray.forEach((item)=>{
+        let param = item.split('=');
+        if(Array.isArray(param) && param[1]){
+            result[param[0]] = param[1];
+        }
+    });
+    return result
+}
