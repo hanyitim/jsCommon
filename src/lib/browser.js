@@ -89,7 +89,7 @@ export function getQueryString(name) {
 export function getQueryGroup() {
     var paramArray = window.location.search.match(/[a-zA-Z0-9]+=[^&]{0,}/gi),
         result = {};
-    paramArray.forEach((item)=>{
+    Array.isArray(paramArray) && paramArray.forEach((item)=>{
         let param = item.split('=');
         if(Array.isArray(param) && param[1]){
             result[param[0]] = param[1];
