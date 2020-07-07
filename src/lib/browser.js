@@ -39,14 +39,15 @@ export function Browser(uaStr) {
  * [setCookie 设置cookie]
  * @param {string} name  [cookie变量名]
  * @param {string} value [cokkie值]
- * @param {number} day   [保存时间，单位：天，默认1天]
+ * @param {number} options   [cookie配置]
  */
-export function setCookie(name, value, day) {
-    var exp = new Date();
-    day = !isNaN(day) ? day : 1;
-
-    exp.setTime(exp.getTime() + day * 24 * 60 * 60 * 1000);//有效期1小时 
-    document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString();
+export function setCookie(name, value, options={}) {
+    let optionsKey = Object.keys(options),
+        optionsStr = optionsKey.map((option)=>{
+            return `${option}=${options[option]};`;
+        });
+    optionsStr.unshift(`${name}=${escape(value)};`);
+    document.cookie = optionsStr.join("");
 }
 
 /**
