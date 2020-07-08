@@ -69,7 +69,10 @@ export function getCookie(name) {
  * @param  {string} name [name]
  */
 export function deleteCookie(name) {
-    setCookie(name, '', -1);
+    if(!name || !getCookie(name)) return false; 
+    setCookie(name, '', {
+        expires:'Thu, 01 Jan 1970 00:00:00 GMT'
+    });
 }
 
 /**
