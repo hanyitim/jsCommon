@@ -1,6 +1,6 @@
 {
   "name": "jsfunc",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "常用的js func",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
