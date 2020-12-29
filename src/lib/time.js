@@ -68,11 +68,13 @@ export function countDown(endTimeStamp, options = {}) {
             utils: [24 * 60 * 60, 60 * 60, 60, 1],
             info: ['天', '小时', '分', '秒']
         },options),
-        { showDouble, utils, info } = defaultOptions;
+        { showDouble, utils, info, before } = defaultOptions;
     if (endTimeStamp && endTimeStamp > now.getTime()) {
         let time_diff = parseInt((endTimeStamp - now.getTime()) / 1000),
             compArr = compter(time_diff, utils, showDouble);
-
+        if(before && before.call){
+            compArr = before(compArr);
+        }
         result = compArr.map((item, index) => {
             return `${item}${info[index]}`;
         });
